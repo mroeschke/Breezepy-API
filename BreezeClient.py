@@ -45,7 +45,7 @@ class Client(object):
         Retreives current air quality information as JSON
         """
         query = parse.urlencode(self.__dict__)
-        current = request.urlopen('https://api.breezometer.com/baqi/' + query)
+        current = request.urlopen('https://api.breezometer.com/baqi/?' + query)
         return json.loads(current.read())
 
     def history(self, start_datetime, end_datetime = None, interval = 1):
@@ -89,5 +89,5 @@ class Client(object):
             params['datetime'] = format_date(start_datetime)
 
         query = parse.urlencode(params)
-        current = request.urlopen('https://api.breezometer.com/baqi/' + query)
+        current = request.urlopen('https://api.breezometer.com/baqi/?' + query)
         return json.loads(current.read())
