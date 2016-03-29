@@ -3,8 +3,6 @@ import json
 from six.moves.urllib import request, parse
 from utils import *
 
-_base_url = 'https://api.breezometer.com/baqi/'
-
 class Client(object):
     "Client to access Breezometer API"
 
@@ -47,7 +45,7 @@ class Client(object):
         Retreives current air quality information as JSON
         """
         query = parse.urlencode(self.__dict__)
-        current = request.urlopen(_base_url + query)
+        current = request.urlopen('https://api.breezometer.com/baqi/' + query)
         return json.loads(current.read())
 
     def history(self, start_datetime, end_datetime = None, interval = 1):
@@ -91,5 +89,5 @@ class Client(object):
             params['datetime'] = format_date(start_datetime)
 
         query = parse.urlencode(params)
-        current = request.urlopen(_base_url + query)
+        current = request.urlopen('https://api.breezometer.com/baqi/' + query)
         return json.loads(current.read())

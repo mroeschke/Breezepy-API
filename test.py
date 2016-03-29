@@ -1,7 +1,7 @@
 import unittest
 import datetime
 from six.moves.urllib.error import HTTPError
-from BreezeClient import _base_url, Client
+from BreezeClient import Client
 
 test_key = 'YOUR_API_KEY'
 lat_lon = (37.7,122.4)
